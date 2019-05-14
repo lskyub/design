@@ -60,6 +60,6 @@ class BackDropActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener {
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return true
     }
 }
