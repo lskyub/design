@@ -1,6 +1,9 @@
 package sbproject.design
 
 import android.content.Context
+import android.content.res.Resources
+import android.graphics.drawable.Drawable
+import android.os.Build
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
@@ -17,17 +20,7 @@ fun <T : CoordinatorLayout.Behavior<*>> View.findBehavior(): T = layoutParams.ru
     if (this !is CoordinatorLayout.LayoutParams) throw IllegalArgumentException("View's layout params should be CoordinatorLayout.LayoutParams")
 
     (layoutParams as CoordinatorLayout.LayoutParams).behavior as? T
-            ?: throw IllegalArgumentException("Layout's behavior is not current behavior")
-}
-
-fun View.showKeyboard(show: Boolean) {
-    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    if (show) {
-        if (requestFocus()) imm.showSoftInput(this, 0)
-    } else {
-        imm.hideSoftInputFromWindow(windowToken, 0)
-    }
-
+        ?: throw IllegalArgumentException("Layout's behavior is not current behavior")
 }
 
 /**
@@ -40,4 +33,12 @@ fun View.showKeyboard(show: Boolean) {
 fun dpToPx(context: Context, dp: Float): Float {
     val displayMetrics = context.resources.displayMetrics
     return dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)
+}
+
+fun getDrawable(res: Resources, id: Int): Drawable {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        res.getDrawable(id, null)
+    } else {
+        res.getDrawable(id)
+    }
 }

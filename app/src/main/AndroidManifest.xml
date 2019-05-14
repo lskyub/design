@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="sbproject.design">
+        package="sbproject.design">
 
     <application
             android:allowBackup="true"
@@ -10,7 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".CompanyActivity"
+                android:name=".view.MainActivity"
                 android:screenOrientation="portrait">
 
             <intent-filter>
@@ -21,7 +21,13 @@
         </activity>
 
         <activity
-                android:name=".MainActivity"
+                android:name=".backdrop.BackDropActivity"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".bottomappbar.BottomAppBarActivity"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".textinputlayout.TextInputLayoutActivity"
                 android:screenOrientation="portrait"/>
     </application>
 
